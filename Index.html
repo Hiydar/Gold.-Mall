@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0f0f0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>مطحنة الذهب — مؤقت الطحن</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>⛏️ مؤقت طحن الحجر</h1>
+
+<div class="notif-banner" id="notifBanner">
+  <span>🔔 فعّل الإشعارات ليصلك تنبيه حتى لو الشاشة مقفلة</span>
+  <button onclick="requestNotif()">تفعيل</button>
+</div>
+
+<div class="ring-wrap">
+  <svg viewBox="0 0 200 200">
+    <circle class="track" cx="100" cy="100" r="88"/>
+    <circle class="prog" id="prog" cx="100" cy="100" r="88" stroke-dasharray="552.9" stroke-dashoffset="0"/>
+  </svg>
+  <div class="center">
+    <div id="time">00:00</div>
+    <div id="label">اختر نوع الحجر</div>
+  </div>
+</div>
+
+<div class="buttons">
+  <button class="hard" id="btnHard" onclick="startHard()">🪨 قاسي<br><small id="hardDur">60 دقيقة</small></button>
+  <button class="soft" id="btnSoft" onclick="startSoft()">🪨 طري<br><small id="softDur">30 دقيقة</small></button>
+  <button class="repeat" id="repeatBtn" onclick="repeatLast()">🔁 تكرار الدورة الأخيرة</button>
+  <button class="stop" id="stopBtn" onclick="stopTimer()">⏹️ إيقاف</button>
+</div>
+
+<div class="actions">
+  <button onclick="openSettings()">⚙️ تعديل المدد</button>
+  <button onclick="toggleHistory()">📜 السجل</button>
+</div>
+
+<div class="log" id="log"></div>
+
+<div class="history" id="historyBox">
+  <h3>سجل الدورات <span onclick="clearHistory()">مسح الكل</span></h3>
+  <div id="historyList"></div>
+</div>
+
+<div class="modal" id="settingsModal">
+  <div class="modal-card">
+    <h2>⚙️ تعديل مدد الطحن</h2>
+    <div class="field">
+      <label>مدة الحجر القاسي (دقيقة)</label>
+      <input type="number" id="inputHard" min="1" max="600" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label>مدة الحجر الطري (دقيقة)</label>
+      <input type="number" id="inputSoft" min="1" max="600" inputmode="numeric">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-save" onclick="saveSettings()">💾 حفظ</button>
+      <button class="btn-cancel" onclick="closeSettings()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
