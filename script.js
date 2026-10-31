@@ -189,3 +189,11 @@ document.body.addEventListener('click', () => {
 }, { once: true });
 
 document.addEventListener('visibilitychange', () => { if (!document.hidden && endTime) tick(); });
+// تسجيل Service Worker ليعمل التطبيق بدون إنترنت
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('تم تفعيل وضع الأوفلاين بنجاح'))
+      .catch(err => console.log('خطأ في تفعيل الأوفلاين:', err));
+  });
+}
