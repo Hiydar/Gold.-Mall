@@ -1,0 +1,70 @@
+:root{
+  --bg:#0f0f0f; --card:#1b1b1b; --card2:#242424; --text:#f5f5f5;
+  --gold:#f5b301; --gray:#8a8f98; --danger:#e5484d; --ok:#30a46c; --blue:#3b82f6;
+}
+*{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  min-height:100dvh; display:flex; flex-direction:column;
+  align-items:center; gap:14px; padding:16px; user-select:none;
+}
+h1{font-size:1.05rem; font-weight:500; opacity:.7; letter-spacing:.5px; margin-top:8px;}
+.ring-wrap{position:relative; width:min(72vw,300px); aspect-ratio:1;}
+svg{transform:rotate(-90deg); width:100%; height:100%;}
+circle{fill:none; stroke-width:12; stroke-linecap:round;}
+.track{stroke:#2a2a2a;}
+.prog{stroke:var(--gold); transition:stroke-dashoffset .9s linear, stroke .3s;}
+.center{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+#time{font-size:clamp(2.6rem,13vw,5rem); font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:1px; line-height:1;}
+#label{font-size:.85rem; opacity:.6; margin-top:6px;}
+.buttons{display:grid; grid-template-columns:1fr 1fr; gap:12px; width:min(92vw,420px);}
+button{
+  border:none; border-radius:16px; padding:20px 10px;
+  font-size:1.1rem; font-weight:700; color:#0f0f0f;
+  cursor:pointer; min-height:90px; transition:transform .08s, filter .2s; font-family:inherit;
+}
+button:active{transform:scale(.97);}
+.hard{background:var(--gold);}
+.soft{background:var(--gray); color:#fff;}
+.stop{grid-column:1/-1; background:var(--danger); color:#fff; min-height:56px; font-size:1rem; display:none;}
+.stop.show{display:block;}
+.repeat{grid-column:1/-1; background:var(--blue); color:#fff; min-height:56px; font-size:1rem; display:none;}
+.repeat.show{display:block;}
+.actions{display:flex; gap:10px; width:min(92vw,420px); flex-wrap:wrap;}
+.actions button{
+  flex:1; min-width:calc(50% - 5px); min-height:48px; font-size:.85rem; border-radius:12px;
+  background:var(--card2); color:var(--text);
+}
+.log{width:min(92vw,420px); font-size:.8rem; opacity:.6; text-align:center; min-height:1.2em;}
+.blink{animation:blink .7s infinite;}
+@keyframes blink{50%{opacity:.25;}}
+.modal{position:fixed; inset:0; background:rgba(0,0,0,.75); display:none; align-items:center; justify-content:center; padding:20px; z-index:100;}
+.modal.show{display:flex;}
+.modal-card{background:var(--card); border-radius:20px; padding:24px; width:min(100%,380px); display:flex; flex-direction:column; gap:16px;}
+.modal-card h2{font-size:1.1rem; text-align:center; font-weight:700;}
+.field{display:flex; flex-direction:column; gap:6px;}
+.field label{font-size:.85rem; opacity:.7;}
+.field input{background:var(--card2); border:1px solid #333; color:var(--text); border-radius:10px; padding:14px; font-size:1.2rem; text-align:center; font-variant-numeric:tabular-nums; font-family:inherit;}
+.field input:focus{outline:2px solid var(--gold);}
+.modal-actions{display:flex; gap:10px;}
+.modal-actions button{flex:1; min-height:48px; border-radius:12px; font-size:.95rem;}
+.btn-save{background:var(--ok); color:#fff;}
+.btn-cancel{background:var(--card2); color:var(--text);}
+.history{width:min(92vw,420px); background:var(--card); border-radius:16px; padding:14px; max-height:220px; overflow-y:auto; display:none;}
+.history.show{display:block;}
+.history h3{font-size:.9rem; margin-bottom:10px; opacity:.7; display:flex; justify-content:space-between;}
+.history h3 span{color:var(--danger); cursor:pointer; font-size:.8rem;}
+.history-item{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #2a2a2a; font-size:.85rem;}
+.history-item:last-child{border:none;}
+.history-item .meta{opacity:.55; font-size:.75rem;}
+.notif-banner{
+  width:min(92vw,420px); background:var(--card2); border-radius:12px;
+  padding:10px 14px; font-size:.8rem; display:flex; align-items:center;
+  justify-content:space-between; gap:10px;
+}
+.notif-banner button{
+  background:var(--ok); color:#fff; border-radius:8px;
+  min-height:36px; padding:6px 14px; font-size:.8rem; min-width:auto;
+}
+.notif-banner.hidden{display:none;}
